@@ -3,6 +3,7 @@ package com.algaworks.algamoney.algamoneyapi.resource;
 import com.algaworks.algamoney.algamoneyapi.event.RecursoCriadoEvent;
 import com.algaworks.algamoney.algamoneyapi.model.Pessoa;
 import com.algaworks.algamoney.algamoneyapi.repository.PessoaRepository;
+import com.algaworks.algamoney.algamoneyapi.service.PessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
@@ -22,6 +23,9 @@ public class PessoaResource {
 
     @Autowired
     private ApplicationEventPublisher publisher;
+
+    @Autowired
+    private PessoaService pessoaService;
 
     @GetMapping
     public List<Pessoa> listar() {
@@ -48,5 +52,9 @@ public class PessoaResource {
         pessoaRepository.deleteById(codigo);
     }
 
-
+    @PutMapping("/{codigo}")
+    public ResponseEntity<Pessoa> atualizar(@PathVariable Long codigo, @Valid @RequestBody Pessoa pessoa) {
+        Pessoa pessoaSalva = pessoaService.atualizar(codigo, pessoa);
+        return ResponseEntity.ok(pessoaSalva);
+    }
 }
