@@ -1,4 +1,4 @@
-package com.algaworks.algamoney.algamoneyapi.security;
+package com.algaworks.algamoney.algamoneyapi.security.util;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
