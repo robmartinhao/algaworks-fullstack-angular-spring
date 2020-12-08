@@ -1,1 +1,1 @@
-# algaworks-fullstack-angular-spring
+# algaworks-fullstack-angular-spring-api
